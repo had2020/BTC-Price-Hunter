@@ -1,17 +1,17 @@
-# ETH Price Hunter Extension
+# BTC Price Hunter Extension
 
 ## Overview
-ETH Price Hunter is a Chrome extension that tracks the price of Ethereum (ETH) and displays it on a badge. The extension includes an embedded graph, a settings button, and a settings menu. The badge updates every minute to reflect the latest price.
+BTC Price Hunter is a Chrome extension that tracks the price of Bitcoin (BTC) and displays it on a badge. The extension includes an embedded graph, a settings button, and a settings menu. The badge updates every minute to reflect the latest price.
 
 ## Features
-- **Price Tracking**: Fetches the latest ETH price from CoinMarketCap and displays it on a badge.
+- **Price Tracking**: Fetches the latest BTC price from CoinMarketCap and displays it on a badge.
 - **Embedded Graph**: Displays an advanced chart from TradingView.
 - **Settings Menu**: Allows users to customize settings such as badge visibility, badge color, and update frequency.
 - **Copy Address**: Provides a button to copy a donation address to the clipboard.
-- **Badge Update**: Updates the badge every minute with the latest ETH price.
+- **Badge Update**: Updates the badge every minute with the latest BTC price.
 
 ## Installation
-1. Clone the repository from GitHub: `ETH-Price-Hunter-Extension`
+1. Clone the repository from GitHub: `BTC-Price-Hunter-Extension`
 2. Open Chrome and navigate to `chrome://extensions/`.
 3. Enable "Developer mode" in the top right corner.
 4. Click "Load unpacked" and select the cloned repository folder.
@@ -38,7 +38,7 @@ ETH Price Hunter is a Chrome extension that tracks the price of Ethereum (ETH) a
 ### JavaScript
 - **[popup.js](popup.js)**: Handles the functionality of the popup interface, including copying the address and opening the settings menu.
 - **[settings.js](settings.js)**: Manages the settings menu, including saving and resetting settings, and updating the badge.
-- **[background.js](background.js)**: Handles background tasks such as fetching the ETH price and updating the badge every minute.
+- **[background.js](background.js)**: Handles background tasks such as fetching the BTC price and updating the badge every minute.
 
 ### CSS
 - **[styles.css](styles.css)**: Styles for the popup interface.
