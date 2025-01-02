@@ -30,21 +30,29 @@ fetch('https://coinmarketcap.com/currencies/ethereum/', {
 */
 // /\ fetching code
 
-localStorage.setItem("btctracker_black_badge", "false")
-localStorage.setItem("btctracker_show_badge", "true")
-localStorage.setItem("btctracker_speed", "3")
+if (localStorage.getItem("firstgo") != "false") {
+  localStorage.setItem("firstgo", "false")
+  chrome.tabs.create({
+    url: chrome.runtime.getURL('settings.html')
+  });
+  localStorage.setItem("firstgo", "false")
 
-chrome.storage.local.set({ "btctracker_speed1": "3" }, () => {
-  console.log("tracker_speed settings saved");
-});
+  localStorage.setItem("tracker_black_badge", "false")
+  localStorage.setItem("tracker_show_badge", "true")
+  localStorage.setItem("tracker_speed", "3")
 
-chrome.storage.local.set({ "btctracker_show_badge1": "true" }, () => {
-  console.log(" tracker_show_badge settings saved");
-});
+  chrome.storage.local.set({ "tracker_speed": "3" }, () => {
+    console.log("tracker_speed settings saved");
+  });
 
-chrome.storage.local.set({ "btctracker_black_badge1": "false" }, () => {
-  console.log("tracker_black_badge settings saved");
-});
+  chrome.storage.local.set({ "tracker_show_badge": "true" }, () => {
+    console.log(" tracker_show_badge settings saved");
+  });
+
+  chrome.storage.local.set({ "tracker_black_badge": "false" }, () => {
+    console.log("tracker_black_badge settings saved");
+  });
+}
 
 document.getElementById('copy-button').addEventListener('click', function() {
   const address = '0x6F4C57911E2867caf57a1316b53A05a71a9F5818';

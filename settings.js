@@ -2,19 +2,19 @@ console.log("settings.js loaded");
 
 function chroma_saving() {
     console.log("chroma_saving");
-    current_black_color = localStorage.getItem("btctracker_black_badge");
-    current_show_badge = localStorage.getItem("btctracker_show_badge");
-    current_speed = localStorage.getItem("btctracker_speed");
+    current_black_color = localStorage.getItem("tracker_black_badge");
+    current_show_badge = localStorage.getItem("tracker_show_badge");
+    current_speed = localStorage.getItem("tracker_speed");
 
-    chrome.storage.local.set({ "btctracker_speed1": [current_speed] }, () => {
+    chrome.storage.local.set({ "tracker_speed": [current_speed] }, () => {
         console.log("tracker_speed settings saved");
     });
 
-    chrome.storage.local.set({ "btctracker_show_badge1": [current_show_badge] }, () => {
+    chrome.storage.local.set({ "tracker_show_badge": [current_show_badge] }, () => {
         console.log(" tracker_show_badge settings saved");
     });
 
-    chrome.storage.local.set({ "btctracker_black_badge1": [current_black_color] }, () => {
+    chrome.storage.local.set({ "tracker_black_badge": [current_black_color] }, () => {
         console.log("tracker_black_badge settings saved");
     });
 
@@ -24,9 +24,9 @@ chroma_saving();
 
 // DEVLOG
 function devlog_changes() {
-    current_black_color = localStorage.getItem("btctracker_black_badge");
-    current_show_badge = localStorage.getItem("btctracker_show_badge");
-    current_speed = localStorage.getItem("btctracker_speed");
+    current_black_color = localStorage.getItem("tracker_black_badge");
+    current_show_badge = localStorage.getItem("tracker_show_badge");
+    current_speed = localStorage.getItem("tracker_speed");
 
     console.log("SETTINGS UPDATED");
     console.log("current_black_color: " + current_black_color);
@@ -36,9 +36,9 @@ function devlog_changes() {
 /* END */
 
 // update based off current settings
-current_black_color = localStorage.getItem("btctracker_black_badge");
-current_show_badge = localStorage.getItem("btctracker_show_badge");
-current_speed = localStorage.getItem("btctracker_speed");
+current_black_color = localStorage.getItem("tracker_black_badge");
+current_show_badge = localStorage.getItem("tracker_show_badge");
+current_speed = localStorage.getItem("tracker_speed");
 
 devlog_changes();
 
@@ -50,7 +50,7 @@ if (current_show_badge == "false") {
     document.getElementById("hide_badge_gastracker").innerHTML = "show badge";
 }
 
-localStorage.setItem("btctracker_speed", current_speed)
+localStorage.setItem("tracker_speed", current_speed)
 
 const slider = document.getElementById('badge_reload_time');
 slider.value = current_speed;
@@ -65,9 +65,9 @@ function changed() {
 
 //Reset 
 function Reset_settings() {
-    localStorage.setItem("btctracker_black_badge", "false")
-    localStorage.setItem("btctracker_show_badge", "true")
-    localStorage.setItem("btctracker_speed", "3")
+    localStorage.setItem("tracker_black_badge", "false")
+    localStorage.setItem("tracker_show_badge", "true")
+    localStorage.setItem("tracker_speed", "3")
     changed();
     devlog_changes();
     document.getElementById("reset_gastracker").innerHTML = "Has been reset";
@@ -84,11 +84,11 @@ button.addEventListener("click", Reset_settings);
 
 //Black Badge 
 function Black_badge() {
-    if ( localStorage.getItem("btctracker_black_badge") == "false" ) {
-        localStorage.setItem("btctracker_black_badge", "true")
+    if ( localStorage.getItem("tracker_black_badge") == "false" ) {
+        localStorage.setItem("tracker_black_badge", "true")
         document.getElementById("black_only_gastracker").innerHTML = "Green and Red badge";
     } else {
-        localStorage.setItem("btctracker_black_badge", "false")
+        localStorage.setItem("tracker_black_badge", "false")
         document.getElementById("black_only_gastracker").innerHTML = "Black only badge";
     }
     changed();
@@ -101,12 +101,12 @@ button1.addEventListener("click", Black_badge);
 
 //Show Badge 
 function Hide_badge() {
-    if ( localStorage.getItem("btctracker_show_badge") == "false" ) {
-        localStorage.setItem("btctracker_show_badge", "true")
+    if ( localStorage.getItem("tracker_show_badge") == "false" ) {
+        localStorage.setItem("tracker_show_badge", "true")
         document.getElementById("hide_badge_gastracker").innerHTML = "Hide badge";
 
     } else {
-        localStorage.setItem("btctracker_show_badge", "false")
+        localStorage.setItem("tracker_show_badge", "false")
         document.getElementById("hide_badge_gastracker").innerHTML = "Show badge";
     }
     changed();
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function handleSliderInput(event) {
         const value = event.target.value;
         console.log(`Slider value: ${value}`);
-        localStorage.setItem("btctracker_speed", value)
+        localStorage.setItem("tracker_speed", value)
         changed()
     }
 
