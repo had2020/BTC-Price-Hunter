@@ -15,7 +15,7 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 function not_should_color(callback) {
-  chrome.storage.local.get("tracker_black_badge", (result) => {
+  chrome.storage.local.get("btctracker_black_badge1", (result) => {
     if (chrome.runtime.lastError) {
       console.error('Error retrieving value:', chrome.runtime.lastError);
       callback(undefined);
@@ -36,7 +36,7 @@ function not_should_color(callback) {
 }
 
 function tracker_show_badge(callback) {
-  chrome.storage.local.get("tracker_show_badge", (result) => {
+  chrome.storage.local.get("btctracker_show_badge1", (result) => {
     if (chrome.runtime.lastError) {
       console.error('Error retrieving value:', chrome.runtime.lastError);
       callback(undefined);
@@ -96,13 +96,13 @@ tracker_show_badge((value) => {
           //kprice = price
           console.log("kprice: " + kprice);
 
-          chrome.storage.local.get("lastprice", (result) => {
+          chrome.storage.local.get("btclastprice", (result) => {
               let lastprice = result.lastprice;
               updateBadge(kprice.toString() + "k");
               //updateBadge(kprice);
               console.log("should be updating badge");
               
-              chrome.storage.local.set({ "lastprice": kprice }, () => {
+              chrome.storage.local.set({ "btclastprice": kprice }, () => {
                 console.log("Last price updated in storage");
               });
             });
@@ -141,7 +141,7 @@ function updateBadge(newnum) {
 }
 
 function gettime(callback) {
-  chrome.storage.local.get("tracker_speed", (result) => {
+  chrome.storage.local.get("btctracker_speed1", (result) => {
     if (chrome.runtime.lastError) {
       console.error('Error retrieving tracker_speed:', chrome.runtime.lastError);
       callback(undefined);
@@ -196,8 +196,9 @@ setInterval(() => {
           //kprice = (parseFloat(price) / 1000).toFixed(1) // it rounds to 1 decimal
           //kprice = cuttafterfirstdecimal(parseFloat(price) / 1000); // it cuts after first decimal
           //kprice = price
+          console.log("kprice: " + kprice);
 
-          chrome.storage.local.get("lastprice", (result) => {
+          chrome.storage.local.get("btclastprice1", (result) => {
             let lastprice = result.lastprice;
             updateBadge(kprice.toString() + "k");
             //updateBadge(kprice);
@@ -244,7 +245,7 @@ setInterval(() => {
 
             }
             
-            chrome.storage.local.set({ "lastprice": kprice }, () => {
+            chrome.storage.local.set({ "btclastprice1": kprice }, () => {
               console.log("Last price updated in storage");
             });
           });

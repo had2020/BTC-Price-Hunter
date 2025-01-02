@@ -1,6 +1,6 @@
 {
-    "name": "ETH Price Hunter",
-    "description": "ETH Price Tracker",
+    "name": "BTC Price Hunter",
+    "description": "BTC Price Tracker",
     "version": "1.0",
     "manifest_version": 3,
     "background": {
