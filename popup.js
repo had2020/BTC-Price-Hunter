@@ -32,6 +32,7 @@ fetch('https://coinmarketcap.com/currencies/ethereum/', {
 
 if (localStorage.getItem("firstgo") != "false") {
   localStorage.setItem("firstgo", "false")
+  alert("Please reset settings to default by clicking on the settings button")
   chrome.tabs.create({
     url: chrome.runtime.getURL('settings.html')
   });
