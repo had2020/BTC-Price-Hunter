@@ -75,7 +75,7 @@ tracker_show_badge((value) => {
 
   if (show_badge == true) {
     //first run
-    fetch('https://coinmarketcap.com/currencies/ethereum/', {
+    fetch('https://coinmarketcap.com/currencies/bitcoin/', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -93,13 +93,13 @@ tracker_show_badge((value) => {
           price = price.replace(/,/g, ''); // remove commas
           //kprice = (parseFloat(price) / 1000).toFixed(1)
           //kprice = cuttafterfirstdecimal(parseFloat(price) / 1000);
-          kprice = price
+          //kprice = price
           console.log("kprice: " + kprice);
 
           chrome.storage.local.get("lastprice", (result) => {
               let lastprice = result.lastprice;
-              //updateBadge(kprice.toString() + "k");
-              updateBadge(kprice);
+              updateBadge(kprice.toString() + "k");
+              //updateBadge(kprice);
               console.log("should be updating badge");
               
               chrome.storage.local.set({ "lastprice": kprice }, () => {
@@ -177,7 +177,7 @@ setInterval(() => {
 
     let should_color = should_color();
 
-    fetch('https://coinmarketcap.com/currencies/ethereum/', {
+    fetch('https://coinmarketcap.com/currencies/bitcoin/', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -195,12 +195,12 @@ setInterval(() => {
           price = price.replace(/,/g, '');
           //kprice = (parseFloat(price) / 1000).toFixed(1) // it rounds to 1 decimal
           //kprice = cuttafterfirstdecimal(parseFloat(price) / 1000); // it cuts after first decimal
-          kprice = price
+          //kprice = price
 
           chrome.storage.local.get("lastprice", (result) => {
             let lastprice = result.lastprice;
-            //updateBadge(kprice.toString() + "k");
-            updateBadge(kprice);
+            updateBadge(kprice.toString() + "k");
+            //updateBadge(kprice);
             console.log("should be updating badge");
 
             chrome.action.setBadgeTextColor({ color: '#ffffff' }, () => {
