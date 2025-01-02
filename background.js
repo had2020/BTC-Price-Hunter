@@ -14,6 +14,21 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
+function formatStringToK(numStr) {
+  const num = Number(numStr);
+
+  if (isNaN(num)) {
+    return "Invalid input"; 
+  }
+
+  if (Math.abs(num) >= 1000) {
+    const formattedNum = (num / 1000).toFixed(0);
+    return formattedNum + "k";
+  } else {
+    return num.toString();
+  }
+}
+
 function not_should_color(callback) {
 chrome.storage.local.get("tracker_black_badge", (result) => {
   if (chrome.runtime.lastError) {
@@ -75,7 +90,7 @@ console.log("show_badge: " + show_badge);
 
 if (show_badge == true) {
   //first run
-  fetch('https://coinmarketcap.com/currencies/ethereum/', {
+  fetch('https://coinmarketcap.com/currencies/bitcoin/', {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })
@@ -92,13 +107,14 @@ if (show_badge == true) {
         //console.log(price);
         price = price.replace(/,/g, ''); // remove commas
         //kprice = (parseFloat(price) / 1000).toFixed(1)
-        kprice = cuttafterfirstdecimal(parseFloat(price) / 1000);
+        //kprice = cuttafterfirstdecimal(parseFloat(price) / 1000);
+        kprice = formatStringToK(price);
         //kprice = price
         console.log("kprice: " + kprice);
 
         chrome.storage.local.get("lastprice", (result) => {
             let lastprice = result.lastprice;
-            updateBadge(kprice.toString() + "k");
+            //updateBadge(kprice.toString() + "k");
             updateBadge(kprice);
             console.log("should be updating badge");
             
@@ -177,7 +193,7 @@ setInterval(() => {
 
   let should_color = should_color();
 
-  fetch('https://coinmarketcap.com/currencies/ethereum/', {
+  fetch('https://coinmarketcap.com/currencies/bitcoin/', {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })
@@ -194,12 +210,13 @@ setInterval(() => {
         console.log(price);
         price = price.replace(/,/g, '');
         //kprice = (parseFloat(price) / 1000).toFixed(1) // it rounds to 1 decimal
-        kprice = cuttafterfirstdecimal(parseFloat(price) / 1000); // it cuts after first decimal
-        kprice = price
+        //kprice = cuttafterfirstdecimal(parseFloat(price) / 1000); // it cuts after first decimal
+        //kprice = price
+        kprice = formatStringToK(price);
 
         chrome.storage.local.get("lastprice", (result) => {
           let lastprice = result.lastprice;
-          updateBadge(kprice.toString() + "k");
+          //updateBadge(kprice.toString() + "k");
           updateBadge(kprice);
           console.log("should be updating badge");
 
