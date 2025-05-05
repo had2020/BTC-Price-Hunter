@@ -1,5 +1,7 @@
 # BTC Price Hunter Extension
 
+https://chromewebstore.google.com/detail/btc-price-hunter/bdfcclknokgbamnkmchkpeennpleglei?authuser=0
+
 ## Overview
 BTC Price Hunter is a Chrome extension that tracks the price of Bitcoin (BTC) and displays it on a badge. The extension includes an embedded graph, a settings button, and a settings menu. The badge updates every minute to reflect the latest price.
 
